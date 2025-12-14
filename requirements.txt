@@ -2,6 +2,7 @@ streamlit
 joblib
 numpy
 matplotlib
-pandas
-scikit-learn==1.4.0
-statsmodels
+pandas==2.1.4  # Contoh versi yang stabil
+scikit-learn==1.4.0 # Sesuaikan dengan versi lokal Anda!
+# ATAU
+statsmodels==0.14.0 # Sesuaikan dengan versi lokal Anda!
