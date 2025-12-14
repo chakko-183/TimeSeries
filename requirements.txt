@@ -2,7 +2,7 @@ streamlit
 joblib
 numpy
 matplotlib
-pandas==2.2.0        # Ganti dengan versi lokal Anda
-scikit-learn==1.4.0  # Ganti dengan versi lokal Anda (Ini Paling Penting)
-scipy==1.13.0        # Ganti dengan versi lokal Anda
-tslearn==0.6.0       # Ganti dengan versi lokal Anda (jika digunakan untuk 1-NN DTW)
+pandas
+scipy
+scikit-learn
+tslearn
