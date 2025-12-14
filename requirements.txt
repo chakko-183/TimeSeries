@@ -2,4 +2,3 @@ streamlit
 joblib
 numpy
 matplotlib
-EOF
