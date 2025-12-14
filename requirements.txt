@@ -2,4 +2,6 @@ streamlit
 joblib
 numpy
 matplotlib
+pandas
 scikit-learn
+statsmodels
