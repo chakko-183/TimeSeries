@@ -3,6 +3,6 @@ joblib
 numpy
 matplotlib
 pandas
-scipy
-scikit-learn
+scikit-learn==1.8.0
+scipy==1.16.3
 tslearn
