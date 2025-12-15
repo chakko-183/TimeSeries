@@ -96,23 +96,52 @@ if model:
     st.markdown(f"**Model Aktif:** **{selected_model_name}**")
     
     st.header("1. Input Data Time Series Baru")
-    st.info(f"Dataset ShapesAll memerlukan **{TIME_STEPS}** titik waktu.")
+    # st.info(f"Dataset ShapesAll memerlukan **{TIME_STEPS}** titik waktu.")
     
     # --- Input Data dan Tombol Generate ---
-    if st.button("Generate Contoh Time Series Acak"):
-        simulated_ts = np.random.randn(TIME_STEPS) * 5 + 10 
-        ts_text = ', '.join(map(str, simulated_ts))
-    else:
-        ts_text = ""
+    # if st.button("Generate Contoh Time Series Acak"):
+    #     simulated_ts = np.random.randn(TIME_STEPS) * 5 + 10 
+    #     ts_text = ', '.join(map(str, simulated_ts))
+    # else:
+    #     ts_text = ""
         
+    # ts_input = st.text_area(
+    #     f"Masukkan {TIME_STEPS} nilai (dipisahkan koma):",
+    #     value=ts_text,
+    #     height=150
+    # )
+
+    # app.py, sekitar baris 104-119
+
+    # Inisialisasi session state jika belum ada
+    if 'ts_data' not in st.session_state:
+        st.session_state['ts_data'] = ""
+
+    def generate_random_ts():
+        """Fungsi yang dipanggil tombol untuk mengisi session state."""
+        simulated_ts = np.random.randn(TIME_STEPS) * 5 + 10 
+        st.session_state['ts_data'] = ', '.join(map(str, simulated_ts))
+
+    # --- Input Data dan Tombol Generate ---
+    st.info(f"Dataset ShapesAll memerlukan **{TIME_STEPS}** titik waktu.")
+
+    # Hubungkan tombol Generate ke fungsi yang mengisi session_state
+    st.button(
+        "Generate Contoh Time Series Acak",
+        on_click=generate_random_ts
+    )
+
+    # Text area dihubungkan ke session_state agar nilainya persistent
     ts_input = st.text_area(
         f"Masukkan {TIME_STEPS} nilai (dipisahkan koma):",
-        value=ts_text,
+        key='ts_data', # Hubungkan langsung ke session state
         height=150
     )
+    # Hapus logika lama: if st.button("Generate Contoh Time Series Acak"): dst.
 
     # --- Bagian Prediksi ---
     if st.button("Lakukan Prediksi", type="primary"):
+        st.write(ts_input)
         if ts_input:
             try:
                 # 1. Parsing Input
